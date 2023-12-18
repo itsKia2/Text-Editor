@@ -13,8 +13,8 @@ class Editor(ttk.Frame):
         self.window = window.Window(self.rootWindow)
 
     def run(self):
-        self.window.createWindow()
         self.menubar.createMenubar("#007fff", "black", "white", "black")
+        self.window.createTextBox()
         self.rootWindow.mainloop()
 
 
