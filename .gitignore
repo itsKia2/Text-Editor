@@ -1,0 +1,7 @@
+__pycache__
+.gitconfig
+pyvenv.cfg
+bin
+lib
+lib64
+include
