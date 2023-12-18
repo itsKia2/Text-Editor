@@ -10,7 +10,6 @@ class Editor(ttk.Frame):
         self.rootWindow = root
         self.rootWindow.title("Text Editor")
         self.menubar = menubar.Menubar(self.rootWindow)
-        # self.window = window.Window(self.rootWindow)
         self.window = window.Window(self.rootWindow)
 
     def run(self):
