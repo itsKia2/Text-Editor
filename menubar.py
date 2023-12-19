@@ -3,8 +3,26 @@ from tkinter import ttk
 
 
 class Menubar(ttk.Frame):
-    def __init__(self, rootWindow):
+    def __init__(self, rootWindow, window):
         self.rootWindow = rootWindow
+        self.window = window
+
+    def createMenubar(self, background, foreground, activebg, activefg):
+        # config for overall menubar
+        self.menubar = Menu(
+            self.rootWindow,
+            background=background,
+            foreground=foreground,
+            activebackground=activebg,
+            activeforeground=activefg,
+        )
+
+        # add cascades
+        self.createFileCasc(background, foreground, activebg, activefg)
+        self.createViewCasc(background, foreground, activebg, activefg)
+
+        # adding menubar to rootWindow config
+        self.rootWindow.config(menu=self.menubar)
 
     def createFileCasc(self, background, foreground, activebg, activefg):
         # config for first cascade
@@ -13,7 +31,7 @@ class Menubar(ttk.Frame):
         )
         # first cascade
         file.add_command(label="New")
-        file.add_command(label="Open")
+        file.add_command(label="Open", command=lambda: self.window.openFile())
         file.add_command(label="Save")
         file.add_command(label="Save as")
         file.add_separator()
@@ -35,20 +53,3 @@ class Menubar(ttk.Frame):
 
         # adding all file commands to cascade
         self.menubar.add_cascade(label="View", menu=view)
-
-    def createMenubar(self, background, foreground, activebg, activefg):
-        # config for overall menubar
-        self.menubar = Menu(
-            self.rootWindow,
-            background=background,
-            foreground=foreground,
-            activebackground=activebg,
-            activeforeground=activefg,
-        )
-
-        # add cascades
-        self.createFileCasc(background, foreground, activebg, activefg)
-        self.createViewCasc(background, foreground, activebg, activefg)
-
-        # adding menubar to rootWindow config
-        self.rootWindow.config(menu=self.menubar)

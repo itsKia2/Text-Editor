@@ -9,8 +9,8 @@ class Editor(ttk.Frame):
         # creating rootWindow
         self.rootWindow = root
         self.rootWindow.title("Text Editor")
-        self.menubar = menubar.Menubar(self.rootWindow)
         self.window = window.Window(self.rootWindow)
+        self.menubar = menubar.Menubar(self.rootWindow, self.window)
 
     def run(self):
         self.menubar.createMenubar("#007fff", "black", "white", "black")
