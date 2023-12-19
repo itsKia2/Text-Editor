@@ -9,5 +9,4 @@ class Window(ttk.Frame):
 
     def createTextBox(self):
         self.textBox = Text(self.rootWindow, state="normal")
-        self.textBox.place(relwidth=1.0, relheight=1.0)
-        # self.textBox.pack(pady=10)
+        self.textBox.pack(fill="both", expand="1")

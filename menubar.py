@@ -22,6 +22,20 @@ class Menubar(ttk.Frame):
         # adding all file commands to cascade
         self.menubar.add_cascade(label="File", menu=file)
 
+    def createViewCasc(self, background, foreground, activebg, activefg):
+        # config for first cascade
+        view = Menu(
+            self.menubar, tearoff=0, background=background, foreground=foreground
+        )
+        # first cascade
+        # view.add_command(label="Fullscreen", command=self.toggleFullscreen())
+        view.add_command(label="Filler - Fullscreen")
+        view.add_command(label="Filler")
+        # file.add_separator()
+
+        # adding all file commands to cascade
+        self.menubar.add_cascade(label="View", menu=view)
+
     def createMenubar(self, background, foreground, activebg, activefg):
         # config for overall menubar
         self.menubar = Menu(
@@ -34,6 +48,7 @@ class Menubar(ttk.Frame):
 
         # add cascades
         self.createFileCasc(background, foreground, activebg, activefg)
+        self.createViewCasc(background, foreground, activebg, activefg)
 
         # adding menubar to rootWindow config
         self.rootWindow.config(menu=self.menubar)
