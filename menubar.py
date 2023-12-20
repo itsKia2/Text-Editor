@@ -32,8 +32,8 @@ class Menubar(ttk.Frame):
         # first cascade
         file.add_command(label="New", command=lambda: self.window.openNewFile())
         file.add_command(label="Open", command=lambda: self.window.openFile())
-        file.add_command(label="Save")
-        file.add_command(label="Save as")
+        file.add_command(label="Save", command=lambda: self.window.saveFile())
+        file.add_command(label="Save as", command=lambda: self.window.saveAsFile())
         file.add_separator()
         file.add_command(label="Exit", command=self.rootWindow.quit)
 
@@ -41,13 +41,10 @@ class Menubar(ttk.Frame):
         self.menubar.add_cascade(label="File", menu=file)
 
     def createViewCasc(self, background, foreground, activebg, activefg):
-        # config for first cascade
+        # config for view cascade
         view = Menu(
             self.menubar, tearoff=0, background=background, foreground=foreground
         )
-        # first cascade
-        # view.add_command(label="Fullscreen", command=self.toggleFullscreen())
-        view.add_command(label="Filler - Fullscreen")
         view.add_command(label="Filler")
         # file.add_separator()
 

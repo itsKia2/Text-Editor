@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog as fd
 from tkinter import messagebox
+from tkinter.filedialog import asksaveasfile
 
 
 class Window(ttk.Frame):
@@ -9,6 +10,7 @@ class Window(ttk.Frame):
         self.rootWindow = root
         self.rootWindow.geometry("900x500")
         self.fileName = ""
+        self.filetypes = (("text files", "*.txt"), ("All files", "*.*"))
 
     def createTextBox(self):
         self.textBox = Text(self.rootWindow, state="normal")
@@ -25,7 +27,6 @@ class Window(ttk.Frame):
             else:
                 self.textBox.delete("1.0", END)
         self.fileName = ""
-        # self.textBox.delete("1.0", END)
 
     def openFile(self):
         # opens existing files
@@ -40,18 +41,29 @@ class Window(ttk.Frame):
                 self.textBox.delete("1.0", END)
             else:
                 self.textBox.delete("1.0", END)
-        filetypes = (("text files", "*.txt"), ("All files", "*.*"))
         file = fd.askopenfile(
-            title="Open Existing File", initialdir="/home/kia/", filetypes=filetypes
+            title="Open Existing File",
+            initialdir="/home/kia/",
+            filetypes=self.filetypes,
         )
         self.fileName = file.name
+        # TODO figure out how to get titles
+        # self.rootWindow.title(self.fileName)
         self.textBox.insert(0.0, file.read())
 
     def saveFile(self):
         if self.fileName == "":
             self.saveAsFile()
         else:
-            print("SAVE")
+            text = str(self.textBox.get(1.0, END))
+            file = open(self.fileName, mode="w")
+            file.write(text)
+            file.close()
 
     def saveAsFile(self):
-        print("SAVE AS FILE")
+        file = asksaveasfile(mode="w")
+        if file is None:
+            return
+        text = str(self.textBox.get(1.0, END))
+        file.write(text)
+        file.close()
