@@ -67,6 +67,7 @@ class Window(ttk.Frame):
 
     def saveAsFile(self):
         file = asksaveasfile(mode="w")
+        self.fileName = file.name
         if file is None:
             return
         text = str(self.textBox.get(1.0, END))
