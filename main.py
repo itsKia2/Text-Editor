@@ -18,10 +18,11 @@ class Editor(ttk.Frame):
 
 
 # starting our program
-root = Tk()
-root.title("kia Editor")
-texter = Editor(root)
-texter.run()
+if __name__ == "__main__":
+    root = Tk()
+    root.title("kia Editor")
+    texter = Editor(root)
+    texter.run()
 
 # TODO:
 # scrollbar
