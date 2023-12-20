@@ -30,7 +30,7 @@ class Menubar(ttk.Frame):
             self.menubar, tearoff=0, background=background, foreground=foreground
         )
         # first cascade
-        file.add_command(label="New")
+        file.add_command(label="New", command=lambda: self.window.openNewFile())
         file.add_command(label="Open", command=lambda: self.window.openFile())
         file.add_command(label="Save")
         file.add_command(label="Save as")
