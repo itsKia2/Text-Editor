@@ -8,7 +8,6 @@ class Editor(ttk.Frame):
     def __init__(self, root):
         # creating rootWindow
         self.rootWindow = root
-        self.rootWindow.title("Text Editor")
         self.window = window.Window(self.rootWindow)
         self.menubar = menubar.Menubar(self.rootWindow, self.window)
 
@@ -20,5 +19,15 @@ class Editor(ttk.Frame):
 
 # starting our program
 root = Tk()
+root.title("kia Editor")
 texter = Editor(root)
 texter.run()
+
+# TODO:
+# scrollbar
+# font size
+# zoom
+# about tab
+# help ?
+# SHORTCUTS
+# borders / aesthetics

@@ -2,7 +2,10 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog as fd
 from tkinter import messagebox
+import tkinter
 from tkinter.filedialog import asksaveasfile
+import tkinter.scrolledtext as st
+import os
 
 
 class Window(ttk.Frame):
@@ -13,7 +16,9 @@ class Window(ttk.Frame):
         self.filetypes = (("text files", "*.txt"), ("All files", "*.*"))
 
     def createTextBox(self):
-        self.textBox = Text(self.rootWindow, state="normal")
+        # self.textBox = Text(self.rootWindow, state="normal")
+        self.textBox = st.ScrolledText(self.rootWindow, state="normal")
+        self.textBox.pack(fill=tkinter.BOTH, side=tkinter.LEFT, expand=True)
         self.textBox.pack(fill="both", expand="1")
 
     def openNewFile(self):
@@ -43,7 +48,7 @@ class Window(ttk.Frame):
                 self.textBox.delete("1.0", END)
         file = fd.askopenfile(
             title="Open Existing File",
-            initialdir="/home/kia/",
+            # initialdir="",
             filetypes=self.filetypes,
         )
         self.fileName = file.name
