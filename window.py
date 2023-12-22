@@ -2,10 +2,10 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog as fd
 from tkinter import messagebox
+from tkinter.font import Font
 import tkinter
 from tkinter.filedialog import asksaveasfile
 import tkinter.scrolledtext as st
-import os
 
 
 class Window(ttk.Frame):
@@ -17,7 +17,11 @@ class Window(ttk.Frame):
 
     def createTextBox(self):
         # self.textBox = Text(self.rootWindow, state="normal")
-        self.textBox = st.ScrolledText(self.rootWindow, state="normal")
+        self.currSize = 11
+        self.myFont = Font(family="Arial", size=self.currSize)
+        self.textBox = st.ScrolledText(
+            self.rootWindow, state="normal", font=self.myFont
+        )
         self.textBox.pack(fill=tkinter.BOTH, side=tkinter.LEFT, expand=True)
         self.textBox.pack(fill="both", expand="1")
 
@@ -73,3 +77,12 @@ class Window(ttk.Frame):
         text = str(self.textBox.get(1.0, END))
         file.write(text)
         file.close()
+
+    def changeFont(self, upDown):
+        if upDown == 1:
+            # font +2
+            self.currSize = self.currSize + 2
+            self.myFont.configure(size=self.currSize)
+        else:
+            self.currSize = self.currSize - 2
+            self.myFont.configure(size=self.currSize)

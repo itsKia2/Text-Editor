@@ -45,7 +45,12 @@ class Menubar(ttk.Frame):
         view = Menu(
             self.menubar, tearoff=0, background=background, foreground=foreground
         )
-        view.add_command(label="Filler")
+        view.add_command(
+            label="Increase font", command=lambda: self.window.changeFont(1)
+        )
+        view.add_command(
+            label="Decrease font", command=lambda: self.window.changeFont(0)
+        )
         # file.add_separator()
 
         # adding all file commands to cascade
