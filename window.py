@@ -87,3 +87,14 @@ class Window(ttk.Frame):
             self.currSize = self.currSize - 2
             self.myFont.configure(size=self.currSize)
         return
+
+    def aboutPopup(self):
+        aboutPopupWin = Tk()
+        aboutPopupWin.title("About kia Editor")
+        aboutPopupWin.grid()
+        aboutPopupWin.geometry("340x200")
+        aboutPopupWin.config(bg="#506CE0")
+        myText = "This is an editor built by Omer Karimi in 2023"
+        myLabel = Label(aboutPopupWin, font=("Arial", 12), text=myText, bg="#506CE0")
+        myLabel.pack()
+        myLabel.place(relx=0.5, rely=0.5, anchor="center")

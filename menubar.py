@@ -21,6 +21,7 @@ class Menubar(ttk.Frame):
         self.createFileCasc(background, foreground)
         self.createEditCasc(background, foreground)
         self.createViewCasc(background, foreground)
+        self.createAboutCasc(background, foreground)
 
         # adding menubar to rootWindow config
         self.rootWindow.config(menu=self.menubar)
@@ -85,3 +86,12 @@ class Menubar(ttk.Frame):
         # file.add_separator()
 
         self.menubar.add_cascade(label="View", menu=view)
+
+    def createAboutCasc(self, background, foreground):
+        about = Menu(
+            self.menubar, tearoff=0, background=background, foreground=foreground
+        )
+        about.add_command(label="About", command=lambda: self.window.aboutPopup())
+        # file.add_separator()
+
+        self.menubar.add_cascade(label="About", menu=about)
