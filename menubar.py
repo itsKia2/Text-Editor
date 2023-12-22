@@ -37,7 +37,9 @@ class Menubar(ttk.Frame):
         file.add_command(label="Save", command=lambda: self.window.saveFile())  #
         file.add_command(label="Save as", command=lambda: self.window.saveAsFile())  #
         file.add_separator()  #
-        file.add_command(label="Exit", command=self.rootWindow.quit)  #
+        file.add_command(
+            label="Exit", command=self.rootWindow.quit, accelerator="CTRL-Q"
+        )  #
 
         # adding all file commands to cascade
         self.menubar.add_cascade(label="File", menu=file)
