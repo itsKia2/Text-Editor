@@ -20,7 +20,7 @@ class Window(ttk.Frame):
         self.currSize = 11
         self.myFont = Font(family="Arial", size=self.currSize)
         self.textBox = st.ScrolledText(
-            self.rootWindow, state="normal", font=self.myFont
+            self.rootWindow, state="normal", font=self.myFont, undo=True
         )
         self.textBox.pack(fill=tkinter.BOTH, side=tkinter.LEFT, expand=True)
         self.textBox.pack(fill="both", expand="1")

@@ -21,3 +21,4 @@ class keymaps:
             lambda event: self.rootWindow.window.textBox.event_generate("<<Cut>>"),
         )
         self.rootWindow.bind("<Control-q>", lambda event: self.rootWindow.quit())
+        # undo keybind is there already (in-built)

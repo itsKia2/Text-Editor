@@ -63,6 +63,11 @@ class Menubar(ttk.Frame):
             accelerator="Ctrl+X",
             command=lambda: self.window.textBox.event_generate("<<Cut>>"),
         )
+        edit.add_command(
+            label="Undo",
+            accelerator="Ctrl+Z",
+            command=lambda: self.window.textBox.edit_undo(),
+        )
 
         self.menubar.add_cascade(label="Edit", menu=edit)
 
