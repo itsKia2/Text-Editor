@@ -47,14 +47,18 @@ class Menubar(ttk.Frame):
             self.menubar, tearoff=0, background=background, foreground=foreground
         )
         edit.add_command(
-            label="Copy", command=lambda: self.window.textBox.event_generate("<<Copy>>")
+            label="Copy",
+            accelerator="Ctrl+C",
+            command=lambda: self.window.textBox.event_generate("<<Copy>>"),
         )
         edit.add_command(
             label="Paste",
+            accelerator="Ctrl+V",
             command=lambda: self.window.textBox.event_generate("<<Paste>>"),
         )
         edit.add_command(
             label="Cut",
+            accelerator="Ctrl+X",
             command=lambda: self.window.textBox.event_generate("<<Cut>>"),
         )
 
