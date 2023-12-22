@@ -57,7 +57,7 @@ class Window(ttk.Frame):
         )
         self.fileName = file.name
         # TODO figure out how to get titles
-        # self.rootWindow.title(self.fileName)
+        self.rootWindow.title(self.fileName + " - kia Editor")
         self.textBox.insert(0.0, file.read())
 
     def saveFile(self):
