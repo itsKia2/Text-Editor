@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import menubar
 import window
+import keymaps
 
 
 class Editor(ttk.Frame):
@@ -10,6 +11,7 @@ class Editor(ttk.Frame):
         self.rootWindow = root
         self.window = window.Window(self.rootWindow)
         self.menubar = menubar.Menubar(self.rootWindow, self.window)
+        self.keymap = keymaps.keymaps(self.rootWindow)
 
     def run(self):
         self.menubar.createMenubar("#007fff", "black", "white", "black")
