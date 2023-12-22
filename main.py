@@ -25,8 +25,6 @@ if __name__ == "__main__":
     texter.run()
 
 # TODO:
-# scrollbar
-# font size
 # zoom
 # about tab
 # help ?

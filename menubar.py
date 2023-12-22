@@ -18,29 +18,49 @@ class Menubar(ttk.Frame):
         )
 
         # add cascades
-        self.createFileCasc(background, foreground, activebg, activefg)
-        self.createViewCasc(background, foreground, activebg, activefg)
+        self.createFileCasc(background, foreground)
+        self.createEditCasc(background, foreground)
+        self.createViewCasc(background, foreground)
 
         # adding menubar to rootWindow config
         self.rootWindow.config(menu=self.menubar)
 
-    def createFileCasc(self, background, foreground, activebg, activefg):
+    def createFileCasc(self, background, foreground):
         # config for first cascade
         file = Menu(
             self.menubar, tearoff=0, background=background, foreground=foreground
         )
         # first cascade
-        file.add_command(label="New", command=lambda: self.window.openNewFile())
-        file.add_command(label="Open", command=lambda: self.window.openFile())
-        file.add_command(label="Save", command=lambda: self.window.saveFile())
-        file.add_command(label="Save as", command=lambda: self.window.saveAsFile())
-        file.add_separator()
-        file.add_command(label="Exit", command=self.rootWindow.quit)
+
+        file.add_command(label="New", command=lambda: self.window.openNewFile())  #
+        file.add_command(label="Open", command=lambda: self.window.openFile())  #
+        file.add_command(label="Save", command=lambda: self.window.saveFile())  #
+        file.add_command(label="Save as", command=lambda: self.window.saveAsFile())  #
+        file.add_separator()  #
+        file.add_command(label="Exit", command=self.rootWindow.quit)  #
 
         # adding all file commands to cascade
         self.menubar.add_cascade(label="File", menu=file)
 
-    def createViewCasc(self, background, foreground, activebg, activefg):
+    def createEditCasc(self, background, foreground):
+        edit = Menu(
+            self.menubar, tearoff=0, background=background, foreground=foreground
+        )
+        edit.add_command(
+            label="Copy", command=lambda: self.window.textBox.event_generate("<<Copy>>")
+        )
+        edit.add_command(
+            label="Paste",
+            command=lambda: self.window.textBox.event_generate("<<Paste>>"),
+        )
+        edit.add_command(
+            label="Cut",
+            command=lambda: self.window.textBox.event_generate("<<Cut>>"),
+        )
+
+        self.menubar.add_cascade(label="Edit", menu=edit)
+
+    def createViewCasc(self, background, foreground):
         # config for view cascade
         view = Menu(
             self.menubar, tearoff=0, background=background, foreground=foreground
@@ -53,5 +73,4 @@ class Menubar(ttk.Frame):
         )
         # file.add_separator()
 
-        # adding all file commands to cascade
         self.menubar.add_cascade(label="View", menu=view)

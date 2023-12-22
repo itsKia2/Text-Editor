@@ -84,5 +84,7 @@ class Window(ttk.Frame):
             self.currSize = self.currSize + 2
             self.myFont.configure(size=self.currSize)
         else:
+            # decrease font by 2
             self.currSize = self.currSize - 2
             self.myFont.configure(size=self.currSize)
+        return
