@@ -14,7 +14,7 @@ class Editor(ttk.Frame):
         self.keymap = keymaps.keymaps(self.rootWindow)
 
     def run(self):
-        self.menubar.createMenubar("#007fff", "black", "white", "black")
+        self.menubar.createMenubar("white", "black", "white", "black")
         self.window.createTextBox()
         self.rootWindow.mainloop()
 
@@ -31,4 +31,5 @@ if __name__ == "__main__":
 # about tab
 # help ?
 # SHORTCUTS
-# borders / aesthetics
+# change menubar colors
+# right click options
